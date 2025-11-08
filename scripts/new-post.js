@@ -1,52 +1,52 @@
-/* 这是一个用于创建带有 front-matter 的新文章 markdown 文件的脚本 */
+/* This is a script for creating new blog post markdown files with front-matter */
 
 import fs from "fs"
 import path from "path"
 
-// 获取当前日期的函数，格式为 YYYY-MM-DD
+// Function to get current date in YYYY-MM-DD format
 function getDate() {
   const today = new Date()
   return today.toISOString().split("T")[0]
 }
 
-// 获取命令行参数
+// Get command line arguments
 const args = process.argv.slice(2)
 
-// 检查是否提供了文件名参数
+// Check if filename argument is provided
 if (args.length === 0) {
-  console.error(`错误: 未提供文件名参数
-用法: npm run new-post -- <filename>`)
-  process.exit(1) // 终止脚本并返回错误代码 1
+  console.error(`Error: No filename argument provided
+Usage: npm run new-post -- <filename>`)
+  process.exit(1) // Terminate script and return error code 1
 }
 
 let fileName = args[0]
 
-// 如果文件名不包含 .md 或 .mdx 扩展名，则添加 .md
+// If filename doesn't include .md or .mdx extension, add .md
 const fileExtensionRegex = /\.(md|mdx)$/i
 if (!fileExtensionRegex.test(fileName)) {
   fileName += ".md"
 }
 
-// 定义目标目录
+// Define target directory
 const targetDir = "./src/content/posts/"
 
-// 使用 path.resolve 获取绝对路径
+// Use path.resolve to get absolute path
 const fullPath = path.resolve(targetDir, fileName)
 
-// 检查文件是否已存在
+// Check if file already exists
 if (fs.existsSync(fullPath)) {
-  console.error(`错误: 文件 ${fullPath} 已存在`)
+  console.error(`Error: File ${fullPath} already exists`)
   process.exit(1)
 }
 
-// 如果目录不存在，则创建目录
+// If directory doesn't exist, create it
 const dirPath = path.dirname(fullPath)
 if (!fs.existsSync(dirPath)) {
   fs.mkdirSync(dirPath, { recursive: true })
 }
 
-// 生成 front-matter 内容
-// 使用文件名（去掉扩展名）作为默认标题
+// Generate front-matter content
+// Use filename (without extension) as default title
 const title = fileName.replace(fileExtensionRegex, "")
 const content = `---
 title: ${title}
@@ -60,8 +60,8 @@ lang: ''
 ---
 `
 
-// 写入文件
+// Write file
 fs.writeFileSync(fullPath, content)
 
-// 输出成功消息
-console.log(`文章 ${fullPath} 已创建`)
+// Output success message
+console.log(`Post ${fullPath} has been created`)

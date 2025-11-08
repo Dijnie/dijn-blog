@@ -9,7 +9,7 @@ import { LinkPreset } from "./types/config";
 
 export const siteConfig: SiteConfig = {
 	title: "yCENzh's Blog",
-	subtitle: "爱你所爱~",
+	subtitle: "Love what you love~",
 	themeColor: {
 		hue: 275, // Default hue for the theme color, from 0 to 360. e.g. red: 0, teal: 200, cyan: 250, pink: 345
 		fixed: false, // Hide the theme color picker for visitors
@@ -50,7 +50,7 @@ export const navBarConfig: NavBarConfig = {
 			external: true, // Show an external link icon and will open in a new tab
 		},*/
 		{
-			name: "开往",
+			name: "Travellings",
 			url: "https://www.travellings.cn/train.html",
 			external: true,
 		},
@@ -58,9 +58,9 @@ export const navBarConfig: NavBarConfig = {
 };
 
 export const profileConfig: ProfileConfig = {
-	avatar: "/avatar.webp", // Relative to the /src directory. Relative to the /public directory if it starts with '/' 原assets/images/demo-avatar.png,可选https://q2.qlogo.cn/headimg_dl?dst_uin=189563385&spec=0
+	avatar: "/avatar.webp", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
 	name: "yCENzh",
-	bio: "Protect What You Love./爱你所爱！",
+	bio: "Protect What You Love./Love what you love！",
 	links: [
 		/*{
 			name: "Twitter",
@@ -85,7 +85,7 @@ export const profileConfig: ProfileConfig = {
 			url: "https://t.me/yCENzh",
 		},
 		{
-			name: "开往",
+			name: "Travellings",
 			icon: "fa6-solid:train-subway",
 			url: "https://www.travellings.cn/train.html",
 		},
